@@ -43,7 +43,9 @@ type RevealProps = {
 /** Opacity + small translate + blur reduction. Honors prefers-reduced-motion via CSS. */
 export function Reveal({ children, as, className, delay = 0, threshold }: RevealProps) {
   const Tag = (as ?? "div") as ElementType;
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold });
+  const { ref, inView } = useInView<HTMLDivElement>(
+    threshold === undefined ? {} : { threshold },
+  );
 
   return (
     <Tag
