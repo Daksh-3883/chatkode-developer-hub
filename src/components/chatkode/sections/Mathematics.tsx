@@ -22,7 +22,7 @@ export function Mathematics() {
           className="self-start lg:sticky lg:top-28"
           title={
             <>
-              Taught mathematics, so the <span className="text-primary">reasoning</span> holds
+               Taught mathematics, so the <span className="text-logic">reasoning</span> holds
               before the code does.
             </>
           }
@@ -35,14 +35,14 @@ export function Mathematics() {
               key={row.label}
               style={{ transitionDelay: `${i * 150}ms` }}
               className={cn(
-                "panel group relative rounded-lg p-5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-border-strong motion-reduce:transition-none",
+                "panel math-step group relative rounded-lg p-5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-logic/35 motion-reduce:transition-none",
                 inView
                   ? "translate-y-0 opacity-100 blur-0"
                   : "translate-y-4 opacity-0 blur-[6px] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-0",
               )}
             >
               <div className="flex items-center gap-3">
-                <span className="label-mono text-[0.6rem] text-primary">
+                <span className="label-mono text-[0.6rem] text-logic">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="label-mono">{row.label}</span>
@@ -91,7 +91,7 @@ function MiniPlot() {
     <figure className="mt-6">
       <svg
         viewBox="0 0 320 90"
-        className="h-24 w-full text-primary"
+        className="h-24 w-full text-logic"
         role="img"
         aria-label="Growth comparison of linear, n log n and quadratic curves"
       >
@@ -113,20 +113,20 @@ function MiniPlot() {
           strokeWidth="1.6"
           strokeDasharray="420"
           strokeDashoffset="420"
-          style={{ animation: "ck-dash 2.4s 0.2s ease-out forwards" }}
+           className="math-curve"
         />
         <path
           d="M0 88 C150 86, 235 60, 300 2"
           fill="none"
-          stroke="var(--color-accent)"
+          stroke="var(--color-primary)"
           strokeWidth="1.2"
           strokeDasharray="4 5"
         />
       </svg>
       <figcaption className="mt-2 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[0.65rem] text-muted-foreground">
         <span className="text-muted-foreground">— O(n)</span>
-        <span className="text-primary">— O(n log n)</span>
-        <span className="text-accent">-- O(n²)</span>
+        <span className="text-logic">— O(n log n)</span>
+        <span className="text-primary">-- O(n²)</span>
       </figcaption>
     </figure>
   );

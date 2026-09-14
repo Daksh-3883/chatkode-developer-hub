@@ -12,23 +12,12 @@ function Atmosphere({ offset }: { offset: number }) {
         className="grid-atmosphere absolute inset-x-0 -top-24 h-[140%] opacity-70 [mask-image:radial-gradient(ellipse_70%_55%_at_50%_25%,black,transparent)]"
         style={{ transform: `translate3d(0, ${offset * 0.12}px, 0)` }}
       />
-      <div
-        className="absolute top-[-18rem] left-1/2 h-[38rem] w-[38rem] -translate-x-1/2 rounded-full opacity-40 blur-[120px]"
-        style={{
-          background:
-            "radial-gradient(circle, oklch(0.83 0.15 172 / 22%) 0%, transparent 65%)",
-          transform: `translate3d(-50%, ${offset * 0.06}px, 0)`,
-        }}
-      />
-      <div
-        className="absolute right-[-10rem] bottom-[-6rem] h-[26rem] w-[26rem] rounded-full opacity-30 blur-[130px]"
-        style={{
-          background: "radial-gradient(circle, oklch(0.78 0.13 78 / 18%) 0%, transparent 70%)",
-        }}
-      />
+      <div className="hero-blue-field absolute inset-x-0 -top-32 h-[42rem]" />
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.055]"
+        className="hero-circuit absolute inset-0 h-full w-full"
         style={{ transform: `translate3d(0, ${offset * 0.04}px, 0)` }}
+        viewBox="0 0 1200 760"
+        preserveAspectRatio="xMidYMid slice"
       >
         <defs>
           <pattern id="ck-dots" width="34" height="34" patternUnits="userSpaceOnUse">
@@ -36,6 +25,16 @@ function Atmosphere({ offset }: { offset: number }) {
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#ck-dots)" />
+        <g className="circuit-paths" fill="none" strokeLinecap="square">
+          <path className="circuit-line circuit-line-blue" d="M40 210H220l46-46h154l50 50h170" />
+          <path className="circuit-line circuit-line-cyan" d="M720 92v76l52 52h270l72 72" />
+          <path className="circuit-line circuit-line-green" d="M90 540h130l52-52h190" />
+          <path className="circuit-line circuit-line-gold" d="M850 560h130l48-48h132" />
+          <circle className="circuit-node node-blue" cx="470" cy="214" r="4" />
+          <circle className="circuit-node node-cyan" cx="772" cy="220" r="4" />
+          <circle className="circuit-node node-green" cx="272" cy="488" r="4" />
+          <path className="circuit-node node-gold" d="M1028 506l6 6-6 6-6-6z" />
+        </g>
       </svg>
       <span className="absolute top-1/3 left-6 font-mono text-[0.7rem] text-foreground/[0.06] select-none">
         ∑ᵢ₌₁ⁿ f(xᵢ) · Δx
@@ -63,7 +62,7 @@ export function Hero() {
       return;
     }
 
-    const timers = [120, 260, 400, 540, 700, 880].map((ms, i) =>
+    const timers = [160, 420, 700, 960, 1200, 1460].map((ms, i) =>
       window.setTimeout(() => setStep(i + 1), ms),
     );
     const typer = window.setInterval(() => {
@@ -74,7 +73,7 @@ export function Hero() {
         }
         return n + 1;
       });
-    }, 190);
+    }, 135);
 
     const onScroll = () => setOffset(Math.min(window.scrollY, 900));
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -101,7 +100,7 @@ export function Hero() {
       <div className="relative mx-auto grid w-full max-w-6xl gap-14 px-5 pt-32 pb-16 sm:px-8 sm:pt-40 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:pt-48 lg:pb-24">
         <div>
           <p className={cn("label-mono flex items-center gap-2.5 text-primary", enter(1))}>
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-success" aria-hidden />
             AI for builders
           </p>
 
@@ -158,19 +157,14 @@ export function Hero() {
         </div>
 
         <div className={cn("relative", enter(6))}>
-          <div
-            aria-hidden
-            className="absolute -inset-6 -z-10 rounded-2xl opacity-60 blur-3xl"
-            style={{
-              background: "radial-gradient(60% 60% at 50% 40%, oklch(0.83 0.15 172 / 10%), transparent)",
-            }}
-          />
+          <div aria-hidden className="code-aura absolute -inset-6 -z-10 rounded-2xl" />
           <CodePanel
             title="lateness.py"
             meta="reasoning → model → algorithm → code"
             lines={heroCode}
             visibleLines={typed}
             showCaret={typed < heroCode.length}
+            highlightLine={typed < heroCode.length ? Math.max(0, typed - 1) : undefined}
             footer={
               <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
                 <span className="text-primary">● model: greedy / EDD</span>

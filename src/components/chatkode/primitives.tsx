@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { Reveal } from "./Reveal";
+import logoAsset from "@/assets/chatkode-logo.png.asset.json";
+import { Reveal, useInView } from "./Reveal";
 
 /* ---------------- Button ---------------- */
 
@@ -28,17 +29,17 @@ export function Button({
   ariaLabel,
 }: ButtonProps) {
   const base =
-    "group inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-tight transition-[transform,background-color,border-color,box-shadow,filter] duration-200 ease-out active:translate-y-0";
+    "brand-button group inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-tight transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out active:translate-y-px active:scale-[0.985]";
   const sizes = {
     md: "min-h-11 px-4 text-sm",
     lg: "min-h-12 px-6 text-[0.95rem]",
   } as const;
   const variants = {
     primary:
-      "bg-primary text-primary-foreground shadow-[0_8px_24px_-14px_oklch(0.83_0.15_172_/_80%)] hover:-translate-y-0.5 hover:brightness-110",
+      "border border-primary/70 bg-primary text-primary-foreground shadow-brand-blue hover:-translate-y-0.5 hover:border-signal hover:bg-primary-hover hover:shadow-brand-blue-strong",
     outline:
-      "border border-border-strong bg-surface/60 text-foreground hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-raised",
-    ghost: "text-muted-foreground hover:text-foreground",
+      "border border-border-strong bg-surface/60 text-foreground hover:-translate-y-0.5 hover:border-signal/60 hover:bg-signal-soft hover:shadow-brand-cyan",
+    ghost: "text-muted-foreground hover:text-signal",
   } as const;
 
   const content = (
@@ -86,12 +87,16 @@ export function Section({
   tone?: "base" | "raised";
   labelledBy?: string;
 }) {
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.18, once: false });
+
   return (
     <section
+      ref={ref}
       id={id}
       aria-labelledby={labelledBy}
+      data-active={inView ? "true" : "false"}
       className={cn(
-        "relative scroll-mt-24 border-t border-border py-24 sm:py-28 lg:py-36",
+        "section-system relative scroll-mt-24 border-t border-border py-24 sm:py-28 lg:py-36",
         tone === "raised" && "bg-surface/40",
         className,
       )}
@@ -155,37 +160,8 @@ export function SectionHeading({
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <svg viewBox="0 0 28 28" className="h-6 w-6" aria-hidden="true" focusable="false">
-        <rect
-          x="1.25"
-          y="1.25"
-          width="25.5"
-          height="25.5"
-          rx="5"
-          fill="none"
-          stroke="var(--color-border-strong)"
-        />
-        <path
-          d="M11 9.5 7 14l4 4.5"
-          fill="none"
-          stroke="var(--color-primary)"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M17 9.5 21 14l-4 4.5"
-          fill="none"
-          stroke="var(--color-accent)"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span className="font-display text-[1.05rem] font-semibold tracking-tight">
-        Chat<span className="text-primary">Kode</span>
-      </span>
+    <span className={cn("inline-flex items-center", className)}>
+      <img src={logoAsset.url} alt="ChatKode" className="h-8 w-auto sm:h-9" />
     </span>
   );
 }

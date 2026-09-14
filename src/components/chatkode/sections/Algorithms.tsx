@@ -25,6 +25,12 @@ const edges: [string, string][] = [
 
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
 
+function nodeColor(id: string) {
+  if (id === "check") return "var(--color-logic)";
+  if (id === "out") return "var(--color-success)";
+  return "var(--color-signal)";
+}
+
 export function Algorithms() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.25 });
   const [active, setActive] = useState<string | null>(null);
@@ -51,8 +57,9 @@ export function Algorithms() {
           aria-label="Diagram: input flows through normalise and order into a scan stage, producing verification and output"
         >
           {edges.map(([a, b], i) => {
-            const from = byId[a]!;
-            const to = byId[b]!;
+            const from = byId[a];
+            const to = byId[b];
+            if (!from || !to) return null;
             const midX = (from.x + to.x) / 2;
             const dim = active !== null && active !== a && active !== b;
             return (
@@ -60,7 +67,7 @@ export function Algorithms() {
                 key={`${a}-${b}`}
                 d={`M ${from.x + 34} ${from.y} C ${midX} ${from.y}, ${midX} ${to.y}, ${to.x - 34} ${to.y}`}
                 fill="none"
-                stroke={dim ? "var(--color-border-strong)" : "var(--color-primary)"}
+                stroke={dim ? "var(--color-border-strong)" : nodeColor(b)}
                 strokeOpacity={dim ? 0.35 : 0.55}
                 strokeWidth="1.25"
                 strokeDasharray="300"
@@ -70,7 +77,7 @@ export function Algorithms() {
                     ? { animation: `ck-dash 900ms ${180 + i * 130}ms ease-out forwards` }
                     : undefined
                 }
-                className="transition-[stroke,stroke-opacity] duration-300"
+                className="algorithm-edge transition-[stroke,stroke-opacity] duration-300"
               />
             );
           })}
@@ -100,8 +107,8 @@ export function Algorithms() {
                   height="40"
                   rx="4"
                   fill="var(--color-surface-raised)"
-                  stroke={active === n.id ? "var(--color-primary)" : "var(--color-border-strong)"}
-                  className="transition-[stroke] duration-300"
+                  stroke={active === n.id ? nodeColor(n.id) : "var(--color-border-strong)"}
+                  className="algorithm-node transition-[stroke,filter] duration-300"
                 />
                 <text
                   x={n.x}
