@@ -57,13 +57,13 @@ export function CodePanel({
   return (
     <div
       className={cn(
-        "panel group/panel overflow-hidden rounded-lg transition-colors duration-300 focus-within:border-primary/40",
+        "panel code-panel group/panel overflow-hidden rounded-lg transition-[border-color,box-shadow,transform] duration-300 focus-within:border-signal/50 hover:border-signal/25 hover:shadow-brand-cyan",
         className,
       )}
     >
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-surface-raised/60 px-3 py-2 sm:px-4">
         <div className="flex min-w-0 items-center gap-2.5">
-          <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+          <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-success" aria-hidden />
           <span className="truncate font-mono text-xs text-foreground/80">{title}</span>
           {meta && (
             <span className="hidden truncate font-mono text-[0.68rem] text-muted-foreground sm:inline">
@@ -74,7 +74,7 @@ export function CodePanel({
         <button
           type="button"
           onClick={copy}
-          className="shrink-0 rounded border border-border px-2 py-1 font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase transition-colors hover:border-primary/50 hover:text-foreground"
+          className="shrink-0 rounded border border-border px-2 py-1 font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase transition-colors hover:border-signal/60 hover:bg-signal-soft hover:text-signal"
         >
           {copied ? "copied" : "copy"}
         </button>
@@ -123,9 +123,9 @@ export function CodePanel({
               <div
                 key={i}
                 className={cn(
-                  "grid grid-cols-[2.25rem_minmax(0,1fr)] transition-[opacity,background-color] duration-500",
-                  i < shown ? "opacity-100" : "opacity-0",
-                  highlightLine === i && "bg-primary/5",
+                    "code-line grid grid-cols-[2.25rem_minmax(0,1fr)] transition-[opacity,transform,background-color,border-color] duration-500",
+                    i < shown ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0",
+                    highlightLine === i && "border-l border-signal bg-signal-soft",
                 )}
               >
                 <span className="pr-4 text-right text-syn-com select-none">{i + 1}</span>

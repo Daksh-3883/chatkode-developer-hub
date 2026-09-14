@@ -25,7 +25,7 @@ export function Pipeline() {
         <span
           aria-hidden
           className={cn(
-            "absolute top-2 bottom-2 left-[1.15rem] w-px origin-top bg-gradient-to-b from-primary/60 via-border-strong to-transparent transition-transform duration-[1400ms] ease-out sm:left-[1.4rem]",
+            "pipeline-rail absolute top-2 bottom-2 left-[1.15rem] w-px origin-top transition-transform duration-[1800ms] ease-out sm:left-[1.4rem]",
             inView ? "scale-y-100" : "scale-y-0",
           )}
         />
@@ -43,8 +43,14 @@ export function Pipeline() {
             <div className="relative flex justify-center">
               <span
                 className={cn(
-                  "z-10 mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border bg-background font-mono text-[0.7rem] transition-colors duration-500",
-                  inView ? "border-primary/50 text-primary" : "border-border text-muted-foreground",
+                  "pipeline-node z-10 mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border bg-background font-mono text-[0.7rem] transition-[color,border-color,box-shadow] duration-500",
+                  inView
+                    ? i === pipeline.length - 1
+                      ? "border-success/60 text-success shadow-brand-green"
+                      : i === 2
+                        ? "border-logic/60 text-logic shadow-brand-gold"
+                        : "border-signal/50 text-signal"
+                    : "border-border text-muted-foreground",
                 )}
               >
                 {stage.step}

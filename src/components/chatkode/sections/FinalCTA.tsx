@@ -11,12 +11,9 @@ export function FinalCTA() {
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="grid-atmosphere absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black,transparent)]" />
-        <div
-          className="drift-slow absolute bottom-[-16rem] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full blur-[130px]"
-          style={{
-            background: "radial-gradient(circle, oklch(0.83 0.15 172 / 20%), transparent 70%)",
-          }}
-        />
+        <div className="cta-field drift-slow absolute inset-x-0 bottom-0 h-full" />
+        <span className="cta-path cta-path-left" />
+        <span className="cta-path cta-path-right" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
