@@ -148,7 +148,7 @@ export function Hero() {
               ["Focus", "Reasoning"],
               ["Built by", "Kode Developers"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-background px-4 py-3.5">
+              <div key={k} className="min-w-0 bg-background px-4 py-3.5">
                 <dt className="label-mono text-[0.6rem]">{k}</dt>
                 <dd className="mt-1.5 truncate font-mono text-xs text-foreground/85">{v}</dd>
               </div>
