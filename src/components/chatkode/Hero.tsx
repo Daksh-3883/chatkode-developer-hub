@@ -98,7 +98,7 @@ export function Hero() {
       <Atmosphere offset={offset} />
 
       <div className="relative mx-auto grid w-full max-w-6xl gap-14 px-5 pt-32 pb-16 sm:px-8 sm:pt-40 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:pt-48 lg:pb-24">
-        <div>
+        <div className="min-w-0">
           <p className={cn("label-mono flex items-center gap-2.5 text-primary", enter(1))}>
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-success" aria-hidden />
             AI for builders
