@@ -35,7 +35,7 @@ export function CodePanel({
   onTabChange?: (tab: string) => void;
   visibleLines?: number;
   showCaret?: boolean;
-  highlightLine?: number;
+  highlightLine?: number | undefined;
   className?: string;
   footer?: ReactNode;
 }) {
@@ -57,7 +57,7 @@ export function CodePanel({
   return (
     <div
       className={cn(
-        "panel code-panel group/panel overflow-hidden rounded-lg transition-[border-color,box-shadow,transform] duration-300 focus-within:border-signal/50 hover:border-signal/25 hover:shadow-brand-cyan",
+        "panel code-panel group/panel min-w-0 max-w-full overflow-hidden rounded-lg transition-[border-color,box-shadow,transform] duration-300 focus-within:border-signal/50 hover:border-signal/25 hover:shadow-brand-cyan",
         className,
       )}
     >

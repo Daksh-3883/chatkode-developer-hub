@@ -98,7 +98,7 @@ export function Hero() {
       <Atmosphere offset={offset} />
 
       <div className="relative mx-auto grid w-full max-w-6xl gap-14 px-5 pt-32 pb-16 sm:px-8 sm:pt-40 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:pt-48 lg:pb-24">
-        <div>
+        <div className="min-w-0">
           <p className={cn("label-mono flex items-center gap-2.5 text-primary", enter(1))}>
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-success" aria-hidden />
             AI for builders
@@ -148,7 +148,7 @@ export function Hero() {
               ["Focus", "Reasoning"],
               ["Built by", "Kode Developers"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-background px-4 py-3.5">
+              <div key={k} className="min-w-0 bg-background px-4 py-3.5">
                 <dt className="label-mono text-[0.6rem]">{k}</dt>
                 <dd className="mt-1.5 truncate font-mono text-xs text-foreground/85">{v}</dd>
               </div>
@@ -156,7 +156,7 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className={cn("relative", enter(6))}>
+        <div className={cn("relative min-w-0", enter(6))}>
           <div aria-hidden className="code-aura absolute -inset-6 -z-10 rounded-2xl" />
           <CodePanel
             title="lateness.py"

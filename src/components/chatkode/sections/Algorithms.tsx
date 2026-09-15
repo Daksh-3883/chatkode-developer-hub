@@ -49,7 +49,7 @@ export function Algorithms() {
         description="Data enters, gets shaped, gets traversed, gets checked. ChatKode is oriented around naming those stages explicitly so the result can be reviewed like any other engineering artefact."
       />
 
-      <div ref={ref} className="panel mt-14 overflow-x-auto rounded-lg p-4 sm:p-8">
+      <div ref={ref} className="panel mt-14 min-w-0 max-w-full overflow-x-auto rounded-lg p-4 sm:p-8">
         <svg
           viewBox="0 0 640 200"
           className="h-auto w-full min-w-[560px]"
