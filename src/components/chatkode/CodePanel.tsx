@@ -35,7 +35,7 @@ export function CodePanel({
   onTabChange?: (tab: string) => void;
   visibleLines?: number;
   showCaret?: boolean;
-  highlightLine?: number;
+  highlightLine?: number | undefined;
   className?: string;
   footer?: ReactNode;
 }) {
