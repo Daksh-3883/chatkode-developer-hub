@@ -156,7 +156,7 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className={cn("relative", enter(6))}>
+        <div className={cn("relative min-w-0", enter(6))}>
           <div aria-hidden className="code-aura absolute -inset-6 -z-10 rounded-2xl" />
           <CodePanel
             title="lateness.py"
