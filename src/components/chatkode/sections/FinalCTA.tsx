@@ -31,7 +31,7 @@ export function FinalCTA() {
         <Reveal delay={150}>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
             Coding, mathematics, algorithms and reasoning — in one developer-focused product from
-            Kode Developers.
+            Kode Developers. Build boldly. Think responsibly.
           </p>
         </Reveal>
         <Reveal delay={210}>
