@@ -62,7 +62,7 @@ export function Hero() {
       return;
     }
 
-    const timers = [160, 420, 700, 960, 1200, 1460].map((ms, i) =>
+    const timers = [60, 180, 320, 460, 600, 720].map((ms, i) =>
       window.setTimeout(() => setStep(i + 1), ms),
     );
     const typer = window.setInterval(() => {
@@ -73,7 +73,7 @@ export function Hero() {
         }
         return n + 1;
       });
-    }, 135);
+    }, 90);
 
     const onScroll = () => setOffset(Math.min(window.scrollY, 900));
     window.addEventListener("scroll", onScroll, { passive: true });
