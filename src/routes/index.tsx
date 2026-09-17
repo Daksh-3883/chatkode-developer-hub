@@ -9,6 +9,7 @@ import { Coding } from "@/components/chatkode/sections/Coding";
 import { Algorithms } from "@/components/chatkode/sections/Algorithms";
 import { Developers } from "@/components/chatkode/sections/Developers";
 import { Approach, KodeDevelopers } from "@/components/chatkode/sections/Approach";
+import { HumanFirst } from "@/components/chatkode/sections/HumanFirst";
 import { FinalCTA, Footer } from "@/components/chatkode/sections/FinalCTA";
 
 const title = "ChatKode — AI for Code, Mathematics & Algorithms";
@@ -46,6 +47,7 @@ function Index() {
         <Developers />
         <Approach />
         <KodeDevelopers />
+        <HumanFirst />
         <FinalCTA />
       </main>
       <Footer />

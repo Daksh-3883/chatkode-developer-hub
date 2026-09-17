@@ -355,6 +355,40 @@
   }
 }
 
+@keyframes ck-human-signal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50%, 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(5.5rem - 0.75rem), -50%, 0);
+  }
+}
+
+@keyframes ck-human-signal-mobile {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, calc(3rem - 0.75rem), 0);
+  }
+}
+
 @utility caret {
   display: inline-block;
   width: 0.55ch;
@@ -439,6 +473,20 @@
 
 @utility math-curve {
   animation: ck-dash 1.6s 200ms ease-out forwards;
+}
+
+@utility human-signal-active {
+  animation: ck-human-signal-mobile 1.25s 350ms ease-in-out 2;
+}
+
+@media (min-width: 640px) {
+  .human-signal-active {
+    animation-name: ck-human-signal;
+  }
+
+  .human-signal-return.human-signal-active {
+    animation-delay: 1.15s;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
