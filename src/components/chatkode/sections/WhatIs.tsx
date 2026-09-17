@@ -78,7 +78,10 @@ function TechComposition() {
           ["complexity", "time O(n log n) · space O(1)"],
           ["risk", "overflow on sum → use 64-bit"],
         ].map(([k, v], i) => (
-          <div key={k} className="grid grid-cols-[7.5rem_minmax(0,1fr)] items-start gap-3">
+          <div
+            key={k}
+            className="grid grid-cols-[5.5rem_minmax(0,1fr)] items-start gap-3 break-words sm:grid-cols-[7.5rem_minmax(0,1fr)]"
+          >
             <span className="text-syn-com">{k}</span>
             <span className={i === 3 ? "text-accent" : "text-foreground/85"}>{v}</span>
           </div>

@@ -36,8 +36,8 @@ export function FinalCTA() {
         </Reveal>
         <Reveal delay={210}>
           <div className="mt-10 flex flex-col items-center gap-4">
-            <Button href="#try" size="lg" withArrow className="w-full sm:w-auto">
-              Try ChatKode
+            <Button href="#coding" size="lg" withArrow className="w-full sm:w-auto">
+              See ChatKode work
             </Button>
             <a
               href="#about"
